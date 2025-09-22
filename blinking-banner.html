@@ -1,0 +1,62 @@
+<div class="blinking-banner">
+    <span class="rotating-text active">BOOK YOUR 2025 & 2026 ADVENTURES – <span class="highlight">RISK FREE BOOKING!</span></span>
+    <span class="rotating-text">BOOK NOW - <span class="highlight-secondary">SECURE YOUR ADVENTURES WITH A LIFETIME DEPOSIT!</span></span>
+</div>
+
+<style>
+    @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    .blinking-banner {
+        background-color: #343a40;
+        color: white;
+        font-size: 14px;
+        text-align: center;
+        padding: 15px 0;
+        border-bottom: 5px solid #007bff;
+        margin-top: 0;
+    }
+
+    .rotating-text {
+        display: none; /* Hide all rotating texts by default */
+    }
+
+    .rotating-text.active {
+        display: inline-block; /* Show the active text */
+        animation: blink 1.5s infinite; /* Add blinking animation */
+    }
+
+    .highlight {
+        color: #ff4d4d;
+        font-weight: bold;
+    }
+
+    .highlight-secondary {
+        color: #ff4d4d;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const rotatingTexts = document.querySelectorAll('.rotating-text');
+        let currentIndex = 0;
+
+        // Function to rotate the texts
+        function rotateTexts() {
+            // Remove 'active' class from the current text
+            rotatingTexts[currentIndex].classList.remove('active');
+
+            // Move to the next text
+            currentIndex = (currentIndex + 1) % rotatingTexts.length;
+
+            // Add 'active' class to the new current text
+            rotatingTexts[currentIndex].classList.add('active');
+        }
+
+        // Rotate texts every 3 seconds
+        setInterval(rotateTexts, 3000);
+    });
+</script>
